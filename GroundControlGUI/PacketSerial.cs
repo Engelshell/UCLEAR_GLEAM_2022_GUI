@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO.Ports;
 using Consistent_Overhead_Byte_Stuffing;
 
-namespace WindowsFormsApp3
+namespace GroundControlGUI
 {
     public class PacketSerial
     {
