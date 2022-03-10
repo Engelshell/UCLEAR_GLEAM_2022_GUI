@@ -30,29 +30,36 @@ namespace GroundControlGUI
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.accelerationBox = new System.Windows.Forms.TextBox();
-            this.orientationBox = new System.Windows.Forms.TextBox();
-            this.angvelocityBox = new System.Windows.Forms.TextBox();
-            this.linearAccelBox = new System.Windows.Forms.TextBox();
-            this.magnetometerBox = new System.Windows.Forms.TextBox();
             this.gravityBox = new System.Windows.Forms.TextBox();
+            this.magnetometerBox = new System.Windows.Forms.TextBox();
+            this.linearAccelBox = new System.Windows.Forms.TextBox();
+            this.angvelocityBox = new System.Windows.Forms.TextBox();
+            this.orientationBox = new System.Windows.Forms.TextBox();
+            this.accelerationBox = new System.Windows.Forms.TextBox();
             this.SI7021Groupbox = new System.Windows.Forms.GroupBox();
-            this.SI7021TemperatureBox = new System.Windows.Forms.TextBox();
             this.SI7021HumidityBox = new System.Windows.Forms.TextBox();
+            this.SI7021TemperatureBox = new System.Windows.Forms.TextBox();
             this.BMP085GroupBox = new System.Windows.Forms.GroupBox();
-            this.BMP085PressureBox = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.BMP085AltitudeBox = new System.Windows.Forms.TextBox();
-            this.FrontSensorsGroupBox = new System.Windows.Forms.GroupBox();
-            this.FrontSensorTemperaturBox = new System.Windows.Forms.TextBox();
-            this.FrontSensorMagnetismBox = new System.Windows.Forms.TextBox();
-            this.FrontSensorDistanceBox = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.BMP085PressureBox = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.TimeGroupBox = new System.Windows.Forms.GroupBox();
             this.timeBox = new System.Windows.Forms.TextBox();
+            this.serialPortComboBox = new System.Windows.Forms.ComboBox();
+            this.serialPortLabel = new System.Windows.Forms.Label();
+            this.serialOpenButton = new System.Windows.Forms.Button();
+            this.serialCloseButton = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.serialBaudRateLabel = new System.Windows.Forms.Label();
+            this.serialBaudRateComboBox = new System.Windows.Forms.ComboBox();
+            this.serialErrorLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SI7021Groupbox.SuspendLayout();
             this.BMP085GroupBox.SuspendLayout();
-            this.FrontSensorsGroupBox.SuspendLayout();
             this.TimeGroupBox.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -63,173 +70,275 @@ namespace GroundControlGUI
             this.groupBox1.Controls.Add(this.angvelocityBox);
             this.groupBox1.Controls.Add(this.orientationBox);
             this.groupBox1.Controls.Add(this.accelerationBox);
-            this.groupBox1.Location = new System.Drawing.Point(38, 32);
+            this.groupBox1.Location = new System.Drawing.Point(51, 39);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 314);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(267, 386);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BNO055 IMU";
             // 
-            // accelerationBox
+            // gravityBox
             // 
-            this.accelerationBox.Location = new System.Drawing.Point(6, 42);
-            this.accelerationBox.Name = "accelerationBox";
-            this.accelerationBox.ReadOnly = true;
-            this.accelerationBox.Size = new System.Drawing.Size(100, 20);
-            this.accelerationBox.TabIndex = 0;
-            this.accelerationBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // orientationBox
-            // 
-            this.orientationBox.Location = new System.Drawing.Point(6, 79);
-            this.orientationBox.Name = "orientationBox";
-            this.orientationBox.ReadOnly = true;
-            this.orientationBox.Size = new System.Drawing.Size(100, 20);
-            this.orientationBox.TabIndex = 1;
-            // 
-            // angvelocityBox
-            // 
-            this.angvelocityBox.Location = new System.Drawing.Point(6, 120);
-            this.angvelocityBox.Name = "angvelocityBox";
-            this.angvelocityBox.ReadOnly = true;
-            this.angvelocityBox.Size = new System.Drawing.Size(100, 20);
-            this.angvelocityBox.TabIndex = 2;
-            // 
-            // linearAccelBox
-            // 
-            this.linearAccelBox.Location = new System.Drawing.Point(6, 157);
-            this.linearAccelBox.Name = "linearAccelBox";
-            this.linearAccelBox.ReadOnly = true;
-            this.linearAccelBox.Size = new System.Drawing.Size(100, 20);
-            this.linearAccelBox.TabIndex = 3;
+            this.gravityBox.Location = new System.Drawing.Point(8, 300);
+            this.gravityBox.Margin = new System.Windows.Forms.Padding(4);
+            this.gravityBox.Name = "gravityBox";
+            this.gravityBox.ReadOnly = true;
+            this.gravityBox.Size = new System.Drawing.Size(132, 22);
+            this.gravityBox.TabIndex = 5;
             // 
             // magnetometerBox
             // 
-            this.magnetometerBox.Location = new System.Drawing.Point(6, 199);
+            this.magnetometerBox.Location = new System.Drawing.Point(8, 245);
+            this.magnetometerBox.Margin = new System.Windows.Forms.Padding(4);
             this.magnetometerBox.Name = "magnetometerBox";
             this.magnetometerBox.ReadOnly = true;
-            this.magnetometerBox.Size = new System.Drawing.Size(100, 20);
+            this.magnetometerBox.Size = new System.Drawing.Size(132, 22);
             this.magnetometerBox.TabIndex = 4;
             this.magnetometerBox.TextChanged += new System.EventHandler(this.magnetometerBox_TextChanged);
             // 
-            // gravityBox
+            // linearAccelBox
             // 
-            this.gravityBox.Location = new System.Drawing.Point(6, 244);
-            this.gravityBox.Name = "gravityBox";
-            this.gravityBox.ReadOnly = true;
-            this.gravityBox.Size = new System.Drawing.Size(100, 20);
-            this.gravityBox.TabIndex = 5;
+            this.linearAccelBox.Location = new System.Drawing.Point(8, 193);
+            this.linearAccelBox.Margin = new System.Windows.Forms.Padding(4);
+            this.linearAccelBox.Name = "linearAccelBox";
+            this.linearAccelBox.ReadOnly = true;
+            this.linearAccelBox.Size = new System.Drawing.Size(132, 22);
+            this.linearAccelBox.TabIndex = 3;
+            // 
+            // angvelocityBox
+            // 
+            this.angvelocityBox.Location = new System.Drawing.Point(8, 148);
+            this.angvelocityBox.Margin = new System.Windows.Forms.Padding(4);
+            this.angvelocityBox.Name = "angvelocityBox";
+            this.angvelocityBox.ReadOnly = true;
+            this.angvelocityBox.Size = new System.Drawing.Size(132, 22);
+            this.angvelocityBox.TabIndex = 2;
+            // 
+            // orientationBox
+            // 
+            this.orientationBox.Location = new System.Drawing.Point(8, 97);
+            this.orientationBox.Margin = new System.Windows.Forms.Padding(4);
+            this.orientationBox.Name = "orientationBox";
+            this.orientationBox.ReadOnly = true;
+            this.orientationBox.Size = new System.Drawing.Size(132, 22);
+            this.orientationBox.TabIndex = 1;
+            // 
+            // accelerationBox
+            // 
+            this.accelerationBox.Location = new System.Drawing.Point(8, 52);
+            this.accelerationBox.Margin = new System.Windows.Forms.Padding(4);
+            this.accelerationBox.Name = "accelerationBox";
+            this.accelerationBox.ReadOnly = true;
+            this.accelerationBox.Size = new System.Drawing.Size(132, 22);
+            this.accelerationBox.TabIndex = 0;
+            this.accelerationBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // SI7021Groupbox
             // 
             this.SI7021Groupbox.Controls.Add(this.SI7021HumidityBox);
             this.SI7021Groupbox.Controls.Add(this.SI7021TemperatureBox);
-            this.SI7021Groupbox.Location = new System.Drawing.Point(38, 378);
+            this.SI7021Groupbox.Location = new System.Drawing.Point(349, 277);
+            this.SI7021Groupbox.Margin = new System.Windows.Forms.Padding(4);
             this.SI7021Groupbox.Name = "SI7021Groupbox";
-            this.SI7021Groupbox.Size = new System.Drawing.Size(200, 120);
+            this.SI7021Groupbox.Padding = new System.Windows.Forms.Padding(4);
+            this.SI7021Groupbox.Size = new System.Drawing.Size(267, 148);
             this.SI7021Groupbox.TabIndex = 2;
             this.SI7021Groupbox.TabStop = false;
             this.SI7021Groupbox.Text = "SI7021";
             // 
-            // SI7021TemperatureBox
-            // 
-            this.SI7021TemperatureBox.Location = new System.Drawing.Point(15, 28);
-            this.SI7021TemperatureBox.Name = "SI7021TemperatureBox";
-            this.SI7021TemperatureBox.Size = new System.Drawing.Size(100, 20);
-            this.SI7021TemperatureBox.TabIndex = 6;
-            // 
             // SI7021HumidityBox
             // 
-            this.SI7021HumidityBox.Location = new System.Drawing.Point(15, 63);
+            this.SI7021HumidityBox.Location = new System.Drawing.Point(20, 78);
+            this.SI7021HumidityBox.Margin = new System.Windows.Forms.Padding(4);
             this.SI7021HumidityBox.Name = "SI7021HumidityBox";
-            this.SI7021HumidityBox.Size = new System.Drawing.Size(100, 20);
+            this.SI7021HumidityBox.ReadOnly = true;
+            this.SI7021HumidityBox.Size = new System.Drawing.Size(132, 22);
             this.SI7021HumidityBox.TabIndex = 7;
+            // 
+            // SI7021TemperatureBox
+            // 
+            this.SI7021TemperatureBox.Location = new System.Drawing.Point(20, 34);
+            this.SI7021TemperatureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SI7021TemperatureBox.Name = "SI7021TemperatureBox";
+            this.SI7021TemperatureBox.ReadOnly = true;
+            this.SI7021TemperatureBox.Size = new System.Drawing.Size(132, 22);
+            this.SI7021TemperatureBox.TabIndex = 6;
             // 
             // BMP085GroupBox
             // 
+            this.BMP085GroupBox.Controls.Add(this.textBox3);
             this.BMP085GroupBox.Controls.Add(this.BMP085AltitudeBox);
+            this.BMP085GroupBox.Controls.Add(this.textBox2);
             this.BMP085GroupBox.Controls.Add(this.BMP085PressureBox);
-            this.BMP085GroupBox.Location = new System.Drawing.Point(256, 226);
+            this.BMP085GroupBox.Controls.Add(this.textBox1);
+            this.BMP085GroupBox.Location = new System.Drawing.Point(341, 39);
+            this.BMP085GroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.BMP085GroupBox.Name = "BMP085GroupBox";
-            this.BMP085GroupBox.Size = new System.Drawing.Size(200, 120);
+            this.BMP085GroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.BMP085GroupBox.Size = new System.Drawing.Size(267, 148);
             this.BMP085GroupBox.TabIndex = 3;
             this.BMP085GroupBox.TabStop = false;
             this.BMP085GroupBox.Text = "BMP085";
             // 
-            // BMP085PressureBox
+            // textBox3
             // 
-            this.BMP085PressureBox.Location = new System.Drawing.Point(6, 34);
-            this.BMP085PressureBox.Name = "BMP085PressureBox";
-            this.BMP085PressureBox.Size = new System.Drawing.Size(100, 20);
-            this.BMP085PressureBox.TabIndex = 7;
+            this.textBox3.Location = new System.Drawing.Point(8, -126);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(132, 22);
+            this.textBox3.TabIndex = 10;
             // 
             // BMP085AltitudeBox
             // 
-            this.BMP085AltitudeBox.Location = new System.Drawing.Point(6, 60);
+            this.BMP085AltitudeBox.Location = new System.Drawing.Point(8, 74);
+            this.BMP085AltitudeBox.Margin = new System.Windows.Forms.Padding(4);
             this.BMP085AltitudeBox.Name = "BMP085AltitudeBox";
-            this.BMP085AltitudeBox.Size = new System.Drawing.Size(100, 20);
+            this.BMP085AltitudeBox.ReadOnly = true;
+            this.BMP085AltitudeBox.Size = new System.Drawing.Size(132, 22);
             this.BMP085AltitudeBox.TabIndex = 8;
             // 
-            // FrontSensorsGroupBox
+            // textBox2
             // 
-            this.FrontSensorsGroupBox.Controls.Add(this.FrontSensorDistanceBox);
-            this.FrontSensorsGroupBox.Controls.Add(this.FrontSensorMagnetismBox);
-            this.FrontSensorsGroupBox.Controls.Add(this.FrontSensorTemperaturBox);
-            this.FrontSensorsGroupBox.Location = new System.Drawing.Point(256, 32);
-            this.FrontSensorsGroupBox.Name = "FrontSensorsGroupBox";
-            this.FrontSensorsGroupBox.Size = new System.Drawing.Size(200, 159);
-            this.FrontSensorsGroupBox.TabIndex = 4;
-            this.FrontSensorsGroupBox.TabStop = false;
-            this.FrontSensorsGroupBox.Text = "Front Sensors";
+            this.textBox2.Location = new System.Drawing.Point(8, -168);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(132, 22);
+            this.textBox2.TabIndex = 9;
             // 
-            // FrontSensorTemperaturBox
+            // BMP085PressureBox
             // 
-            this.FrontSensorTemperaturBox.Location = new System.Drawing.Point(6, 26);
-            this.FrontSensorTemperaturBox.Name = "FrontSensorTemperaturBox";
-            this.FrontSensorTemperaturBox.Size = new System.Drawing.Size(100, 20);
-            this.FrontSensorTemperaturBox.TabIndex = 8;
+            this.BMP085PressureBox.Location = new System.Drawing.Point(8, 42);
+            this.BMP085PressureBox.Margin = new System.Windows.Forms.Padding(4);
+            this.BMP085PressureBox.Name = "BMP085PressureBox";
+            this.BMP085PressureBox.ReadOnly = true;
+            this.BMP085PressureBox.Size = new System.Drawing.Size(132, 22);
+            this.BMP085PressureBox.TabIndex = 7;
             // 
-            // FrontSensorMagnetismBox
+            // textBox1
             // 
-            this.FrontSensorMagnetismBox.Location = new System.Drawing.Point(6, 58);
-            this.FrontSensorMagnetismBox.Name = "FrontSensorMagnetismBox";
-            this.FrontSensorMagnetismBox.Size = new System.Drawing.Size(100, 20);
-            this.FrontSensorMagnetismBox.TabIndex = 9;
-            // 
-            // FrontSensorDistanceBox
-            // 
-            this.FrontSensorDistanceBox.Location = new System.Drawing.Point(6, 92);
-            this.FrontSensorDistanceBox.Name = "FrontSensorDistanceBox";
-            this.FrontSensorDistanceBox.Size = new System.Drawing.Size(100, 20);
-            this.FrontSensorDistanceBox.TabIndex = 10;
+            this.textBox1.Location = new System.Drawing.Point(8, -207);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(132, 22);
+            this.textBox1.TabIndex = 8;
             // 
             // TimeGroupBox
             // 
             this.TimeGroupBox.Controls.Add(this.timeBox);
-            this.TimeGroupBox.Location = new System.Drawing.Point(262, 383);
+            this.TimeGroupBox.Location = new System.Drawing.Point(51, 471);
+            this.TimeGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.TimeGroupBox.Name = "TimeGroupBox";
-            this.TimeGroupBox.Size = new System.Drawing.Size(194, 78);
+            this.TimeGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.TimeGroupBox.Size = new System.Drawing.Size(259, 96);
             this.TimeGroupBox.TabIndex = 5;
             this.TimeGroupBox.TabStop = false;
             this.TimeGroupBox.Text = "Time";
             // 
             // timeBox
             // 
-            this.timeBox.Location = new System.Drawing.Point(6, 33);
+            this.timeBox.Location = new System.Drawing.Point(8, 41);
+            this.timeBox.Margin = new System.Windows.Forms.Padding(4);
             this.timeBox.Name = "timeBox";
-            this.timeBox.Size = new System.Drawing.Size(100, 20);
+            this.timeBox.ReadOnly = true;
+            this.timeBox.Size = new System.Drawing.Size(132, 22);
             this.timeBox.TabIndex = 9;
+            // 
+            // serialPortComboBox
+            // 
+            this.serialPortComboBox.FormattingEnabled = true;
+            this.serialPortComboBox.Location = new System.Drawing.Point(6, 35);
+            this.serialPortComboBox.Name = "serialPortComboBox";
+            this.serialPortComboBox.Size = new System.Drawing.Size(121, 24);
+            this.serialPortComboBox.TabIndex = 6;
+            // 
+            // serialPortLabel
+            // 
+            this.serialPortLabel.AutoSize = true;
+            this.serialPortLabel.Location = new System.Drawing.Point(133, 39);
+            this.serialPortLabel.Name = "serialPortLabel";
+            this.serialPortLabel.Size = new System.Drawing.Size(69, 16);
+            this.serialPortLabel.TabIndex = 7;
+            this.serialPortLabel.Text = "Serial Port";
+            // 
+            // serialOpenButton
+            // 
+            this.serialOpenButton.Location = new System.Drawing.Point(9, 107);
+            this.serialOpenButton.Name = "serialOpenButton";
+            this.serialOpenButton.Size = new System.Drawing.Size(77, 23);
+            this.serialOpenButton.TabIndex = 8;
+            this.serialOpenButton.Text = "Open";
+            this.serialOpenButton.UseVisualStyleBackColor = true;
+            this.serialOpenButton.Click += new System.EventHandler(this.serialOpenButton_Click);
+            // 
+            // serialCloseButton
+            // 
+            this.serialCloseButton.Location = new System.Drawing.Point(92, 107);
+            this.serialCloseButton.Name = "serialCloseButton";
+            this.serialCloseButton.Size = new System.Drawing.Size(71, 23);
+            this.serialCloseButton.TabIndex = 9;
+            this.serialCloseButton.Text = "Close";
+            this.serialCloseButton.UseVisualStyleBackColor = true;
+            this.serialCloseButton.Click += new System.EventHandler(this.serialCloseButton_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.serialBaudRateLabel);
+            this.groupBox2.Controls.Add(this.serialBaudRateComboBox);
+            this.groupBox2.Controls.Add(this.serialErrorLabel);
+            this.groupBox2.Controls.Add(this.serialPortComboBox);
+            this.groupBox2.Controls.Add(this.serialCloseButton);
+            this.groupBox2.Controls.Add(this.serialPortLabel);
+            this.groupBox2.Controls.Add(this.serialOpenButton);
+            this.groupBox2.Location = new System.Drawing.Point(679, 39);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(226, 215);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Serial Network";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // serialBaudRateLabel
+            // 
+            this.serialBaudRateLabel.AutoSize = true;
+            this.serialBaudRateLabel.Location = new System.Drawing.Point(133, 70);
+            this.serialBaudRateLabel.Name = "serialBaudRateLabel";
+            this.serialBaudRateLabel.Size = new System.Drawing.Size(71, 16);
+            this.serialBaudRateLabel.TabIndex = 12;
+            this.serialBaudRateLabel.Text = "Baud Rate";
+            // 
+            // serialBaudRateComboBox
+            // 
+            this.serialBaudRateComboBox.FormattingEnabled = true;
+            this.serialBaudRateComboBox.Location = new System.Drawing.Point(6, 62);
+            this.serialBaudRateComboBox.Name = "serialBaudRateComboBox";
+            this.serialBaudRateComboBox.Size = new System.Drawing.Size(121, 24);
+            this.serialBaudRateComboBox.TabIndex = 11;
+            // 
+            // serialErrorLabel
+            // 
+            this.serialErrorLabel.AutoSize = true;
+            this.serialErrorLabel.Location = new System.Drawing.Point(6, 145);
+            this.serialErrorLabel.Name = "serialErrorLabel";
+            this.serialErrorLabel.Size = new System.Drawing.Size(44, 16);
+            this.serialErrorLabel.TabIndex = 10;
+            this.serialErrorLabel.Text = "label2";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 539);
+            this.ClientSize = new System.Drawing.Size(917, 663);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.TimeGroupBox);
-            this.Controls.Add(this.FrontSensorsGroupBox);
             this.Controls.Add(this.BMP085GroupBox);
             this.Controls.Add(this.SI7021Groupbox);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Ground Control GUI";
             this.groupBox1.ResumeLayout(false);
@@ -238,10 +347,10 @@ namespace GroundControlGUI
             this.SI7021Groupbox.PerformLayout();
             this.BMP085GroupBox.ResumeLayout(false);
             this.BMP085GroupBox.PerformLayout();
-            this.FrontSensorsGroupBox.ResumeLayout(false);
-            this.FrontSensorsGroupBox.PerformLayout();
             this.TimeGroupBox.ResumeLayout(false);
             this.TimeGroupBox.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -261,12 +370,19 @@ namespace GroundControlGUI
         private System.Windows.Forms.GroupBox BMP085GroupBox;
         private System.Windows.Forms.TextBox BMP085AltitudeBox;
         private System.Windows.Forms.TextBox BMP085PressureBox;
-        private System.Windows.Forms.GroupBox FrontSensorsGroupBox;
-        private System.Windows.Forms.TextBox FrontSensorDistanceBox;
-        private System.Windows.Forms.TextBox FrontSensorMagnetismBox;
-        private System.Windows.Forms.TextBox FrontSensorTemperaturBox;
         private System.Windows.Forms.GroupBox TimeGroupBox;
         private System.Windows.Forms.TextBox timeBox;
+        private System.Windows.Forms.ComboBox serialPortComboBox;
+        private System.Windows.Forms.Label serialPortLabel;
+        private System.Windows.Forms.Button serialOpenButton;
+        private System.Windows.Forms.Button serialCloseButton;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label serialErrorLabel;
+        private System.Windows.Forms.ComboBox serialBaudRateComboBox;
+        private System.Windows.Forms.Label serialBaudRateLabel;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

@@ -12,41 +12,50 @@ using System.Threading;
 //using GroundControlGUI.PacketSerial;
 using System.Timers;
 using MessagePack;
+using SQLitePCL;
+using Microsoft.Data.Sqlite;
+using System.IO;
 
 namespace GroundControlGUI
 {
     public partial class Form1 : Form
     {
-        private static System.Timers.Timer aTimer;
+        private static System.Timers.Timer _loopTimer;
         SerialPort _serialPort;
         PacketSerial _ps;
+        sqdatabase sqdb;
+        StreamWriter SI7021DataFile;
 
         public Form1()
         {
-            StringComparer stringComparer = StringComparer.OrdinalIgnoreCase;
-            aTimer = new System.Timers.Timer(1);
-            String portname = "COM4";
-            //SerialPort.GetPortNames()[0]
+
             _ps = new PacketSerial();
             _serialPort = new SerialPort();
-
-            _serialPort.PortName = portname;
-            _serialPort.BaudRate = 230400;
-
-            // Set the read/write timeouts
-            _serialPort.ReadTimeout = 500;
-            _serialPort.WriteTimeout = 500;
+            _loopTimer = new System.Timers.Timer(1);
             _ps.setStream(_serialPort);
             _ps.setPacketHandler(messageCallback);
-            _serialPort.Open();
-
-            aTimer.Elapsed += loop;
-            aTimer.AutoReset = true;
-            aTimer.Enabled = true;
-
-
+            //_serialPort.ReadTimeout = 500;
+            //_serialPort.WriteTimeout = 500;
+            //sqdb = new sqdatabase();
+            SI7021DataFile = new StreamWriter("SI7021DataFile.csv");
+            
+            //sqdb.initializeDB();
 
             InitializeComponent();
+            this.serialOpenButton.Enabled = true;
+            this.serialCloseButton.Enabled = false;
+
+            this.serialBaudRateComboBox.Items.AddRange(new String[]
+            {"9600", "19200", "38400", "57600", "115200", "230400", "460800", "921600"});
+            this.serialBaudRateComboBox.SelectedIndex = 5;
+
+            this.serialPortComboBox.Items.AddRange(SerialPort.GetPortNames());
+            //this.serialPortComboBox.SelectedIndex = 0;
+           
+            _loopTimer.Elapsed += loop;
+            _loopTimer.AutoReset = true;
+            _loopTimer.Enabled = true;
+
         }
 
         public void messageCallback(ref byte[] bytes, int size)
@@ -59,10 +68,11 @@ namespace GroundControlGUI
                 SensorData sensors = MessagePackSerializer.Deserialize<SensorData>(bytes);
                 //LogMessage mes = MessagePackSerializer.Deserialize<LogMessage>(bytes);
                 Console.WriteLine(sensors.type);
-
+                
                 //we have sensors
                 if (sensors.type == 4)
                 {
+                    Console.WriteLine(sensors.sensors.bno055.acceleration.x);
                     //BNO055
                     accelerationBox.Invoke(new Action(() => accelerationBox.Text =
                         sensors.sensors.bno055.acceleration.ToString()));
@@ -96,30 +106,38 @@ namespace GroundControlGUI
                     BMP085AltitudeBox.Invoke(new Action(() => BMP085AltitudeBox.Text =
                         sensors.sensors.bmp085.altitude.ToString()));
 
-                    //FrontSensors
-                    FrontSensorDistanceBox.Invoke(new Action(() => FrontSensorDistanceBox.Text =
-                        sensors.sensors.frontsensors.distance.ToString()));
-
-                    FrontSensorMagnetismBox.Invoke(new Action(() => FrontSensorMagnetismBox.Text =
-                        sensors.sensors.frontsensors.magnetism.ToString()));
-
-                    FrontSensorTemperaturBox.Invoke(new Action(() => FrontSensorTemperaturBox.Text =
-                        sensors.sensors.frontsensors.temperature.ToString()));
-
-
+ 
                     //Time
                     timeBox.Invoke(new Action(() => timeBox.Text =
                         sensors.sensors.time.millis.ToString()));
 
+                    SI7021DataFile.Write(String.Format("{0},{1}\r\n",
+                        sensors.sensors.si7021.temperature,
+                        sensors.sensors.si7021.humidity));
 
+                    SI7021DataFile.Flush();
                 }
 
-
+                
 
             }
             catch (Exception ex)
             {
-                return;
+               
+            }
+
+            try
+            {
+               LogMessage logm = MessagePackSerializer.Deserialize<LogMessage>(bytes);
+                if(logm.type == 5)
+                {
+                    Console.WriteLine(logm.message);
+                }
+
+
+            } catch(Exception ex)
+            {
+
             }
             //var json = MessagePackSerializer.ConvertToJson(bytes);
             //Sensors sensors = MessagePackSerializer.Deserialize<Sensors>(bytes);
@@ -136,7 +154,10 @@ namespace GroundControlGUI
 
         public void loop(Object source, ElapsedEventArgs e)
         {
-            _ps.update();
+            if (_serialPort.IsOpen)
+            {
+                _ps.update();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -152,6 +173,41 @@ namespace GroundControlGUI
         private void magnetometerBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void serialOpenButton_Click(object sender, EventArgs e)
+        {
+            if (!_serialPort.IsOpen)
+            {
+                if(this.serialPortComboBox.Items.Count < 1)
+                {
+                    this.serialErrorLabel.Text = "No serial COM devices found";
+                    return;
+                }
+                this.serialErrorLabel.Text = "";
+                _serialPort.PortName = (string)this.serialPortComboBox.SelectedItem;
+                _serialPort.BaudRate = Int32.Parse((String)this.serialBaudRateComboBox.SelectedItem);
+                _serialPort.Open();
+                this.serialCloseButton.Enabled = true;
+                this.serialOpenButton.Enabled = false;
+            }
+
+        }
+
+        private void serialCloseButton_Click(object sender, EventArgs e)
+        {
+            if (_serialPort.IsOpen)
+            {
+                this.serialErrorLabel.Text = "";
+                _serialPort.Close();
+                this.serialOpenButton.Enabled = true;
+                this.serialCloseButton.Enabled = false;
+            }
         }
     }
 }

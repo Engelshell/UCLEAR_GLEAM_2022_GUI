@@ -39,8 +39,8 @@ namespace GroundControlGUI
         public void update()
         {
             if (_stream == null) return;
-
-            while (_stream.BytesToRead > 0)
+            if (!_stream.IsOpen) return;
+            while (_stream.IsOpen && _stream.BytesToRead > 0)
             {
                 byte data = (byte)_stream.ReadByte();
 
