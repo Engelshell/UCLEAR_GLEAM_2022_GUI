@@ -107,17 +107,6 @@ namespace GroundControlGUI
     };
 
     [MessagePackObject]
-    public class FrontSensors
-    {
-        [Key(0)]
-        public float temperature { get; set; }
-        [Key(1)]
-        public float magnetism { get; set; }
-        [Key(2)]
-        public float distance { get; set; }
-    }
-
-    [MessagePackObject]
     public class Time
     {
         [Key(0)]
@@ -134,10 +123,8 @@ namespace GroundControlGUI
         [Key(2)]
         public BMP085 bmp085 { get; set; }
         [Key(3)]
-        public FrontSensors frontsensors { get; set; }
-        [Key(4)]
         public Time time { get; set; }
-    }; //102
+    };
 
 
     [MessagePackObject]
@@ -154,12 +141,11 @@ namespace GroundControlGUI
     [MessagePackObject]
     public class LogMessage
     {
-        //[Key(5)]
         [Key(0)]
         public byte type { get; set; }
         [Key(1)]
         public String message { get; set; }
-    }; //102
+    };
 
 
 

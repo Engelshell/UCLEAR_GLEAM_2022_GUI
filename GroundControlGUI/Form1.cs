@@ -36,10 +36,10 @@ namespace GroundControlGUI
             _ps.setPacketHandler(messageCallback);
             //_serialPort.ReadTimeout = 500;
             //_serialPort.WriteTimeout = 500;
-            //sqdb = new sqdatabase();
+            sqdb = new sqdatabase();
             SI7021DataFile = new StreamWriter("SI7021DataFile.csv");
             
-            //sqdb.initializeDB();
+            sqdb.initializeDB();
 
             InitializeComponent();
             this.serialOpenButton.Enabled = true;
@@ -116,6 +116,10 @@ namespace GroundControlGUI
                         sensors.sensors.si7021.humidity));
 
                     SI7021DataFile.Flush();
+
+
+                    sqdb.writeDataRow(ref sensors);
+
                 }
 
                 
