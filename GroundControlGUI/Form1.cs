@@ -64,10 +64,10 @@ namespace GroundControlGUI
             {
                 Array.Resize(ref bytes, size);
                 string hex = BitConverter.ToString(bytes).Replace("-", " ");
-                Console.WriteLine(hex);
+                //Console.WriteLine(hex);
                 SensorData sensors = MessagePackSerializer.Deserialize<SensorData>(bytes);
                 //LogMessage mes = MessagePackSerializer.Deserialize<LogMessage>(bytes);
-                Console.WriteLine(sensors.type);
+                //Console.WriteLine(sensors.type);
                 
                 //we have sensors
                 if (sensors.type == 4)

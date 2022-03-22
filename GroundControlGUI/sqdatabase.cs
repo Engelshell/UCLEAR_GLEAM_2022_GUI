@@ -40,11 +40,67 @@ namespace GroundControlGUI
 	`datetimeepoch`	INTEGER
 );";
 
+
+		public String insertStatement = @"
+INSERT INTO
+  `RoverData` (
+    accelerationX,
+    accelerationY,
+    accelerationZ,
+    orientationX,
+    orientationY,
+    orientationZ,
+    angularX,
+    angularY,
+    angularZ,
+    linearX,
+    linearY,
+    linearZ,
+    magnetismX,
+    magnetismY,
+    magnetismZ,
+    gravityX,
+    gravityY,
+    gravityZ,
+    si7021temperature,
+    si7021humidity,
+    bmp085pressure,
+    bmp085altitude,
+    timemillis,
+    datetimeepoch
+  )
+VALUES(
+    @accelerationX,
+    @accelerationY,
+    @accelerationZ,
+    @orientationX,
+    @orientationY,
+    @orientationZ,
+    @angularX,
+    @angularY,
+    @angularZ,
+    @linearX,
+    @linearY,
+    @linearZ,
+    @magnetismX,
+    @magnetismY,
+    @magnetismZ,
+    @gravityX,
+    @gravityY,
+    @gravityZ,
+    @si7021temperature,
+    @si7021humidity,
+    @bmp085pressure,
+    @bmp085altitude,
+    @timemillis,
+    @datetimeepoch
+  )
+";
 		public void initializeDB()
         {
 			String datetim = DateTime.Now.ToString("yyyyMMddHHmmss");
 			SQLitePCL.Batteries.Init();
-			sqconnection = new SqliteConnection($"Data Source=${datetim}.db");
+			sqconnection = new SqliteConnection($"Data Source={datetim}.db");
 			sqconnection.Open();
 			SqliteTransaction tran;
 			var command = sqconnection.CreateCommand();
@@ -76,19 +132,7 @@ namespace GroundControlGUI
 			{
 
 				var command = sqconnection.CreateCommand();
-				command.CommandText = @"
-INSERT INTO `RoverData` 
-(`accelerationX`, `accelerationY, `accelerationZ`, `orientationX`, `orientationY`,
-`orientationZ`, `angularX`, `angularY`, `angularZ`, `linearX`, `linearY`, `linearZ`,
-`magnetismX`, `magnetismY`, `magnetismZ`, `gravityX`, `gravityY`, `gravityZ`, 
-`si7021temperature`, `si7021humidity`, `bmp085pressure`, `bmp085altitude`	
-`timemillis`, `datetimeepoch`)
-VALUES(@accelerationX, @accelerationY, @accelerationZ, @orientationX, @orientationY,
-@orientationZ, @angularX, @angularY, @angularZ, @linearX, @linearY, @linearZ,
-@magnetismX, @magnetismY, @magnetismZ, @gravityX, @gravityY, @gravityZ, 
-@si7021temperature, @si7021humidity, @bmp085pressure, @bmp085altitude	
-@timemillis, @datetimeepoch)
-";
+				command.CommandText = insertStatement;
 				command.Prepare();
 				command.Parameters.AddWithValue("@accelerationX", data.sensors.bno055.acceleration.x);
 				command.Parameters.AddWithValue("@accelerationY", data.sensors.bno055.acceleration.y);
@@ -122,8 +166,8 @@ VALUES(@accelerationX, @accelerationY, @accelerationZ, @orientationX, @orientati
 				command.Parameters.AddWithValue("@timemillis", data.sensors.time.millis);
 				command.Parameters.AddWithValue("@datetimeepoch", DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
 
-				command.ExecuteNonQuery();
-				
+				var ret = command.ExecuteNonQuery();
+				Console.WriteLine(ret);
 				transaction.Commit();
 			}
 
