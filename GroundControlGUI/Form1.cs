@@ -72,7 +72,7 @@ namespace GroundControlGUI
                 //we have sensors
                 if (sensors.type == 4)
                 {
-                    Console.WriteLine(sensors.sensors.bno055.acceleration.x);
+                    //Console.WriteLine(sensors.sensors.bno055.acceleration.x);
                     //BNO055
                     accelerationBox.Invoke(new Action(() => accelerationBox.Text =
                         sensors.sensors.bno055.acceleration.ToString()));
@@ -111,11 +111,11 @@ namespace GroundControlGUI
                     timeBox.Invoke(new Action(() => timeBox.Text =
                         sensors.sensors.time.millis.ToString()));
 
-                    SI7021DataFile.Write(String.Format("{0},{1}\r\n",
+                    /*SI7021DataFile.Write(String.Format("{0},{1}\r\n",
                         sensors.sensors.si7021.temperature,
                         sensors.sensors.si7021.humidity));
 
-                    SI7021DataFile.Flush();
+                    SI7021DataFile.Flush();*/
 
 
                     sqdb.writeDataRow(ref sensors);
@@ -129,7 +129,7 @@ namespace GroundControlGUI
             {
                
             }
-
+            /*
             try
             {
                LogMessage logm = MessagePackSerializer.Deserialize<LogMessage>(bytes);
@@ -142,7 +142,7 @@ namespace GroundControlGUI
             } catch(Exception ex)
             {
 
-            }
+            }*/
             //var json = MessagePackSerializer.ConvertToJson(bytes);
             //Sensors sensors = MessagePackSerializer.Deserialize<Sensors>(bytes);
 

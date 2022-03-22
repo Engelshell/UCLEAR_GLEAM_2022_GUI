@@ -167,7 +167,7 @@ VALUES(
 				command.Parameters.AddWithValue("@datetimeepoch", DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
 
 				var ret = command.ExecuteNonQuery();
-				Console.WriteLine(ret);
+				//Console.WriteLine(ret);
 				transaction.Commit();
 			}
 
