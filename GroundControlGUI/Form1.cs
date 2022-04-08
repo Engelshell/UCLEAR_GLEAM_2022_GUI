@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
-//using GroundControlGUI.PacketSerial;
 using System.Timers;
 using MessagePack;
 using SQLitePCL;
@@ -24,7 +23,6 @@ namespace GroundControlGUI
         SerialPort _serialPort;
         PacketSerial _ps;
         sqdatabase sqdb;
-        StreamWriter SI7021DataFile;
 
         public Form1()
         {
@@ -37,7 +35,6 @@ namespace GroundControlGUI
             //_serialPort.ReadTimeout = 500;
             //_serialPort.WriteTimeout = 500;
             sqdb = new sqdatabase();
-            SI7021DataFile = new StreamWriter("SI7021DataFile.csv");
             
             sqdb.initializeDB();
 
@@ -64,15 +61,11 @@ namespace GroundControlGUI
             {
                 Array.Resize(ref bytes, size);
                 string hex = BitConverter.ToString(bytes).Replace("-", " ");
-                //Console.WriteLine(hex);
                 SensorData sensors = MessagePackSerializer.Deserialize<SensorData>(bytes);
-                //LogMessage mes = MessagePackSerializer.Deserialize<LogMessage>(bytes);
-                //Console.WriteLine(sensors.type);
                 
                 //we have sensors
                 if (sensors.type == 4)
                 {
-                    //Console.WriteLine(sensors.sensors.bno055.acceleration.x);
                     //BNO055
                     accelerationBox.Invoke(new Action(() => accelerationBox.Text =
                         sensors.sensors.bno055.acceleration.ToString()));
@@ -143,16 +136,6 @@ namespace GroundControlGUI
             {
 
             }*/
-            //var json = MessagePackSerializer.ConvertToJson(bytes);
-            //Sensors sensors = MessagePackSerializer.Deserialize<Sensors>(bytes);
-
-            // You can dump MessagePack binary blobs to human readable json.
-            // Using indexed keys (as opposed to string keys) will serialize to MessagePack arrays,
-            // hence property names are not available.
-            // [99,"hoge","huga"]
-            // var json = MessagePackSerializer.ConvertToJson(bytes);
-
-            //Console.WriteLine(json);
 
         }
 
@@ -215,6 +198,11 @@ namespace GroundControlGUI
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }

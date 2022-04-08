@@ -30,6 +30,12 @@ namespace GroundControlGUI
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.gravityBox = new System.Windows.Forms.TextBox();
             this.magnetometerBox = new System.Windows.Forms.TextBox();
             this.linearAccelBox = new System.Windows.Forms.TextBox();
@@ -37,15 +43,20 @@ namespace GroundControlGUI
             this.orientationBox = new System.Windows.Forms.TextBox();
             this.accelerationBox = new System.Windows.Forms.TextBox();
             this.SI7021Groupbox = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SI7021HumidityBox = new System.Windows.Forms.TextBox();
             this.SI7021TemperatureBox = new System.Windows.Forms.TextBox();
             this.BMP085GroupBox = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.BMP085AltitudeBox = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.BMP085PressureBox = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.TimeGroupBox = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.timeBox = new System.Windows.Forms.TextBox();
             this.serialPortComboBox = new System.Windows.Forms.ComboBox();
             this.serialPortLabel = new System.Windows.Forms.Label();
@@ -55,17 +66,6 @@ namespace GroundControlGUI
             this.serialBaudRateLabel = new System.Windows.Forms.Label();
             this.serialBaudRateComboBox = new System.Windows.Forms.ComboBox();
             this.serialErrorLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SI7021Groupbox.SuspendLayout();
             this.BMP085GroupBox.SuspendLayout();
@@ -91,10 +91,65 @@ namespace GroundControlGUI
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(267, 386);
+            this.groupBox1.Size = new System.Drawing.Size(346, 386);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BNO055 IMU";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(173, 300);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 16);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Gravity";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(173, 251);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 16);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Magnetometer";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(172, 196);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "linearAccel";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(174, 154);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 16);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "angVelocity";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(175, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 16);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Orientation";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(179, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 16);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Acceleration";
             // 
             // gravityBox
             // 
@@ -102,7 +157,7 @@ namespace GroundControlGUI
             this.gravityBox.Margin = new System.Windows.Forms.Padding(4);
             this.gravityBox.Name = "gravityBox";
             this.gravityBox.ReadOnly = true;
-            this.gravityBox.Size = new System.Drawing.Size(132, 22);
+            this.gravityBox.Size = new System.Drawing.Size(157, 22);
             this.gravityBox.TabIndex = 5;
             // 
             // magnetometerBox
@@ -111,7 +166,7 @@ namespace GroundControlGUI
             this.magnetometerBox.Margin = new System.Windows.Forms.Padding(4);
             this.magnetometerBox.Name = "magnetometerBox";
             this.magnetometerBox.ReadOnly = true;
-            this.magnetometerBox.Size = new System.Drawing.Size(132, 22);
+            this.magnetometerBox.Size = new System.Drawing.Size(157, 22);
             this.magnetometerBox.TabIndex = 4;
             this.magnetometerBox.TextChanged += new System.EventHandler(this.magnetometerBox_TextChanged);
             // 
@@ -121,7 +176,7 @@ namespace GroundControlGUI
             this.linearAccelBox.Margin = new System.Windows.Forms.Padding(4);
             this.linearAccelBox.Name = "linearAccelBox";
             this.linearAccelBox.ReadOnly = true;
-            this.linearAccelBox.Size = new System.Drawing.Size(132, 22);
+            this.linearAccelBox.Size = new System.Drawing.Size(157, 22);
             this.linearAccelBox.TabIndex = 3;
             // 
             // angvelocityBox
@@ -130,7 +185,7 @@ namespace GroundControlGUI
             this.angvelocityBox.Margin = new System.Windows.Forms.Padding(4);
             this.angvelocityBox.Name = "angvelocityBox";
             this.angvelocityBox.ReadOnly = true;
-            this.angvelocityBox.Size = new System.Drawing.Size(132, 22);
+            this.angvelocityBox.Size = new System.Drawing.Size(159, 22);
             this.angvelocityBox.TabIndex = 2;
             // 
             // orientationBox
@@ -139,7 +194,7 @@ namespace GroundControlGUI
             this.orientationBox.Margin = new System.Windows.Forms.Padding(4);
             this.orientationBox.Name = "orientationBox";
             this.orientationBox.ReadOnly = true;
-            this.orientationBox.Size = new System.Drawing.Size(132, 22);
+            this.orientationBox.Size = new System.Drawing.Size(160, 22);
             this.orientationBox.TabIndex = 1;
             // 
             // accelerationBox
@@ -148,7 +203,7 @@ namespace GroundControlGUI
             this.accelerationBox.Margin = new System.Windows.Forms.Padding(4);
             this.accelerationBox.Name = "accelerationBox";
             this.accelerationBox.ReadOnly = true;
-            this.accelerationBox.Size = new System.Drawing.Size(132, 22);
+            this.accelerationBox.Size = new System.Drawing.Size(164, 22);
             this.accelerationBox.TabIndex = 0;
             this.accelerationBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -158,7 +213,7 @@ namespace GroundControlGUI
             this.SI7021Groupbox.Controls.Add(this.label3);
             this.SI7021Groupbox.Controls.Add(this.SI7021HumidityBox);
             this.SI7021Groupbox.Controls.Add(this.SI7021TemperatureBox);
-            this.SI7021Groupbox.Location = new System.Drawing.Point(349, 277);
+            this.SI7021Groupbox.Location = new System.Drawing.Point(441, 277);
             this.SI7021Groupbox.Margin = new System.Windows.Forms.Padding(4);
             this.SI7021Groupbox.Name = "SI7021Groupbox";
             this.SI7021Groupbox.Padding = new System.Windows.Forms.Padding(4);
@@ -166,6 +221,24 @@ namespace GroundControlGUI
             this.SI7021Groupbox.TabIndex = 2;
             this.SI7021Groupbox.TabStop = false;
             this.SI7021Groupbox.Text = "SI7021";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(159, 84);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 16);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Humidity";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(159, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 16);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Temperature";
             // 
             // SI7021HumidityBox
             // 
@@ -194,7 +267,7 @@ namespace GroundControlGUI
             this.BMP085GroupBox.Controls.Add(this.textBox2);
             this.BMP085GroupBox.Controls.Add(this.BMP085PressureBox);
             this.BMP085GroupBox.Controls.Add(this.textBox1);
-            this.BMP085GroupBox.Location = new System.Drawing.Point(341, 39);
+            this.BMP085GroupBox.Location = new System.Drawing.Point(441, 39);
             this.BMP085GroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.BMP085GroupBox.Name = "BMP085GroupBox";
             this.BMP085GroupBox.Padding = new System.Windows.Forms.Padding(4);
@@ -202,6 +275,25 @@ namespace GroundControlGUI
             this.BMP085GroupBox.TabIndex = 3;
             this.BMP085GroupBox.TabStop = false;
             this.BMP085GroupBox.Text = "BMP085";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(148, 79);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 16);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Altitude";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(148, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Pressure";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // textBox3
             // 
@@ -261,6 +353,15 @@ namespace GroundControlGUI
             this.TimeGroupBox.TabStop = false;
             this.TimeGroupBox.Text = "Time";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(147, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 16);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Milliseconds";
+            // 
             // timeBox
             // 
             this.timeBox.Location = new System.Drawing.Point(8, 41);
@@ -316,7 +417,7 @@ namespace GroundControlGUI
             this.groupBox2.Controls.Add(this.serialCloseButton);
             this.groupBox2.Controls.Add(this.serialPortLabel);
             this.groupBox2.Controls.Add(this.serialOpenButton);
-            this.groupBox2.Location = new System.Drawing.Point(679, 39);
+            this.groupBox2.Location = new System.Drawing.Point(758, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(226, 215);
             this.groupBox2.TabIndex = 10;
@@ -350,111 +451,11 @@ namespace GroundControlGUI
             this.serialErrorLabel.TabIndex = 10;
             this.serialErrorLabel.Text = "label2";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(148, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Pressure";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 16);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Altitude";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(159, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 16);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Temperature";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(159, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 16);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Humidity";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(147, 52);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 16);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Acceleration";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(147, 100);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 16);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Orientation";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(147, 154);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 16);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "angVelocity";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(147, 196);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 16);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "linearAccel";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(147, 251);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 16);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Magnetometer";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(147, 300);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 16);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Gravity";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(147, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 16);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Milliseconds";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 663);
+            this.ClientSize = new System.Drawing.Size(1022, 663);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.TimeGroupBox);
             this.Controls.Add(this.BMP085GroupBox);
